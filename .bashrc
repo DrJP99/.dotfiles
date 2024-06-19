@@ -240,8 +240,9 @@ bind "set show-all-if-ambiguous on"
 bind "set menu-complete-display-prefix on"
 bind "set completion-ignore-case on"
 
-
-source ~/.git-prompt.sh
+if [ -f ~/.git-prompt.sh ]; then    
+    source ~/.git-prompt.sh
+fi
 
 # di = directories
 # fi = files
@@ -271,7 +272,9 @@ done
 # LS_COLORS="fi=00:di=1;${PURPLE}:ex=1;${GREEN}:*.tar=4;${RED}:*.zip=4;${RED}:*.gz=4;${RED}:*.xz=4;${RED}:*.bz2=4;${RED}:*.genozip=4;${RED}:*.lz=4;${RED}:*.lz4=4;${RED}:*.jar=4;${RED}:*.lzma=4;${RED}:*.lzo=4;${RED}:*.rz=4;${RED}:*.sfark=4;${RED}:*.sz=4;${RED}:*.deb=4;${RED}72:*.jpg=${L_CYAN}:*.jpeg=${L_CYAN}:*.png=${L_CYAN}:*.ico=${L_CYAN}:*.log=04"
 export PATH=$PATH:/home/jp/.spicetify
 export PATH=$PATH:/home/jp/.local/bin
-. "$HOME/.cargo/env"
+if [ -f "$HOME/.cargo/env" ]; then
+    . "$HOME/.cargo/env"
+fi
 
 # Interactive cp & mv
 alias cp='cp -vi'
