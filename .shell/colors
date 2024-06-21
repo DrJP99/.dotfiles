@@ -1,5 +1,3 @@
-#! /bin/bash
-
 # COLORS
 NO_FORMAT=$'\001\e[0m\002'
 F_BOLD=$'\001\e[1m\002'
