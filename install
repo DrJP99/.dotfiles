@@ -8,9 +8,9 @@ mkdir -pv "$HOME/.local/bin"
 CONFIG_FOLDERS=( )
 for dir in .config/*
 do
-	CONFIG_FOLDERS+=( ${dir#$".config"\/} )
+	CONFIG_FOLDERS+=( "$HOME/.config/"${dir#$".config"\/} )
 done
 
-mkdir -pv $"$HOME/.config/"${CONFIG_FOLDERS[@]}
+mkdir -pv ${CONFIG_FOLDERS[@]}
 
 stow -R .
