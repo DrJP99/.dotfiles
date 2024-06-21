@@ -242,6 +242,10 @@ bind "set completion-ignore-case on"
 
 if [ -f ~/.git-prompt.sh ]; then    
     source ~/.git-prompt.sh
+else
+    __git_ps1 () {
+        :
+    }
 fi
 
 # di = directories
