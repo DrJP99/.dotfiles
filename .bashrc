@@ -56,70 +56,10 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
-# COLORS
-NO_FORMAT=$'\001\e[0m\002'
-F_BOLD=$'\001\e[1m\002'
-F_DIM=$'\001\e[2m\002'
-
-# COLORS
-# C_RED=$'\001\e[38;5;1m\002'
-# C_ORANGE=$'\001\e[38;5;172m\002'
-# c_GREY=$'\001\e[38;5;95m\002'
-# C_GREEN=$'\001\e[38;5;41m\002'
-# C_BLUE=$'\001\e[38;5;14m\002'
-# C_YELLOW=$'\001\e[38;5;214m\002'
-# C_PURPLE=$'\001\e[${L_PURPLE}m\002'
-
-# Terminal Colors
-# SIMPLE CODES
-BLACK='30'
-GREY='38;5;8'
-
-RED='31'
-L_RED='38;5;9'
-
-GREEN='32'
-L_GREEN='38;5;10'
-
-YELLOW='33'
-L_YELLOW='38;5;11'
-
-BLUE='34'
-L_BLUE='38;5;12'
-
-PURPLE='35'
-L_PURPLE='38;5;13'
-
-CYAN='36'
-L_CYAN='38;5;14'
-
-WHITE='37'
-L_WHITE='38;5;15'
-
-# FULL CODES
-C_BLACK=$'\001\e[${BLACK}m\002'
-c_GREY=$'\001\e[${GREY}m\002'
-
-C_RED=$'\001\e[${RED}m\002'
-C_L_RED=$'\001\e[${L_RED}m\002'
-
-C_GREEN=$'\001\e[${GREEN}m\002'
-C_L_GREEN=$'\001\e[${L_GREEN}m\002'
-
-C_YELLOW=$'\001\e[${YELLOW}m\002'
-C_L_YELLOW=$'\001\e[${L_YELLOW}m\002'
-
-C_BLUE=$'\001\e[${BLUE}m\002'
-C_L_BLUE=$'\001\e[${L_BLUE}m\002'
-
-C_PURPLE=$'\001\e[${PURPLE}m\002'
-C_L_PURPLE=$'\001\e[${L_PURPLE}m\002'
-
-C_CYAN=$'\001\e[${CYAN}m\002'
-C_L_CYAN=$'\001\e[${L_CYAN}m\002'
-
-C_WHITE=$'\001\e[${WHITE}m\002'
-C_L_WHITE=$'\001\e[${L_WHITE}m\002'
+# Include colors
+if [ -f ~/.shell/colors.sh ]; then
+    source ~/.shell/colors.sh
+fi
 
 GIT_PS1_SHOWDIRTYSTATE=yes
 GIT_PS1_SHOWSTASHSTATE=yes
@@ -248,30 +188,9 @@ else
     }
 fi
 
-# di = directories
-# fi = files
-# ln = symbolic link
-# pi = named pipe
-# so = socket
-# bd = blocked device
-# cd = character device
-# or = orphan symbolic
-# mi = missing file
-# ex = executable file
-# *.x = extension x
-# ...
-
-# LS_COLORS="fi=00:di=1;${PURPLE}:ex=1;${L_PURPLE}:"
-LS_COLORS="rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:"
-for file in .tar .tgz .arc .arj .taz .lha .lz4 .lzh .lzma .tlz .txz .tzo .t7z .zip .z .dz .gz .lrz .lz .lzo .xz .zst .tzst .bz2 .bz .tbz .tbz2 .tz .deb .rpm .jar .war .ear .sar .rar .alz .ace .zoo .cpio .7z .rz .cab .wim .swm .dwm .esd;
-do
-    LS_COLORS="${LS_COLORS}*${file}=4;${RED}:";
-done
-
-for file in .jpg .jpeg .mjpg .mjpeg .gif .bmp .pbm .pgm .ppm .tga .xbm .xpm .tif .tiff .png .svg .svgz .mng .pcx .mov .mpg .mpeg .m2v .mkv .webm .ogm .mp4 .m4v .mp4v .vob .qt .nuv .wmv .asf .rm .rmvb .flc .avi .fli .flv .gl .dl .xcf .xwd .yuv .cgm .emf .ogv .ogx;
-do
-    LS_COLORS="${LS_COLORS}*${file}=${L_CYAN}:";
-done
+if [ -f ~/.shell/ls_colors.sh ]; then
+    source ~/.shell/ls_colors.sh
+fi
 
 # LS_COLORS="fi=00:di=1;${PURPLE}:ex=1;${GREEN}:*.tar=4;${RED}:*.zip=4;${RED}:*.gz=4;${RED}:*.xz=4;${RED}:*.bz2=4;${RED}:*.genozip=4;${RED}:*.lz=4;${RED}:*.lz4=4;${RED}:*.jar=4;${RED}:*.lzma=4;${RED}:*.lzo=4;${RED}:*.rz=4;${RED}:*.sfark=4;${RED}:*.sz=4;${RED}:*.deb=4;${RED}72:*.jpg=${L_CYAN}:*.jpeg=${L_CYAN}:*.png=${L_CYAN}:*.ico=${L_CYAN}:*.log=04"
 export PATH=$PATH:/home/jp/.spicetify

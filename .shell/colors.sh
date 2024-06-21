@@ -1,0 +1,66 @@
+#! /bin/bash
+
+# COLORS
+NO_FORMAT=$'\001\e[0m\002'
+F_BOLD=$'\001\e[1m\002'
+F_DIM=$'\001\e[2m\002'
+
+# COLORS
+# C_RED=$'\001\e[38;5;1m\002'
+# C_ORANGE=$'\001\e[38;5;172m\002'
+# c_GREY=$'\001\e[38;5;95m\002'
+# C_GREEN=$'\001\e[38;5;41m\002'
+# C_BLUE=$'\001\e[38;5;14m\002'
+# C_YELLOW=$'\001\e[38;5;214m\002'
+# C_PURPLE=$'\001\e[${L_PURPLE}m\002'
+
+# Terminal Colors
+# SIMPLE CODES
+BLACK='30'
+GREY='38;5;8'
+
+RED='31'
+L_RED='38;5;9'
+
+GREEN='32'
+L_GREEN='38;5;10'
+
+YELLOW='33'
+L_YELLOW='38;5;11'
+
+BLUE='34'
+L_BLUE='38;5;12'
+
+PURPLE='35'
+L_PURPLE='38;5;13'
+
+CYAN='36'
+L_CYAN='38;5;14'
+
+WHITE='37'
+L_WHITE='38;5;15'
+
+# FULL CODES
+C_BLACK=$'\001\e[${BLACK}m\002'
+c_GREY=$'\001\e[${GREY}m\002'
+
+C_RED=$'\001\e[${RED}m\002'
+C_L_RED=$'\001\e[${L_RED}m\002'
+
+C_GREEN=$'\001\e[${GREEN}m\002'
+C_L_GREEN=$'\001\e[${L_GREEN}m'
+
+C_YELLOW=$'\001\e[${YELLOW}m\002'
+C_L_YELLOW=$'\001\e[${L_YELLOW}m\002'
+
+C_BLUE=$'\001\e[${BLUE}m\002'
+C_L_BLUE=$'\001\e[${L_BLUE}m\002'
+
+C_PURPLE=$'\001\e[${PURPLE}m\002'
+C_L_PURPLE=$'\001\e[${L_PURPLE}m\002'
+
+C_CYAN=$'\001\e[${CYAN}m\002'
+C_L_CYAN=$'\001\e[${L_CYAN}m\002'
+
+C_WHITE=$'\001\e[${WHITE}m\002'
+C_L_WHITE=$'\001\e[${L_WHITE}m\002'
