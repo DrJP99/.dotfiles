@@ -118,10 +118,10 @@ else
 fi
 unset color_prompt force_color_prompt
 
-# If this is an xterm set the title to user@host:dir
+# If this is an xterm set the title to user @ host in dir
 case "$TERM" in
 xterm*|rxvt*)
-    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
+    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u @ \h in \w\a\]$PS1"
     ;;
 *)
     ;;
@@ -188,9 +188,6 @@ else
         :
     }
 fi
-
-export PATH=$PATH:/home/jp/.spicetify
-export PATH=$PATH:/home/jp/.local/bin
 
 # Load Rust/Cargo env variables
 if [ -f "$HOME/.cargo/env" ]; then
