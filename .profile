@@ -25,7 +25,6 @@ fi
 if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
-. "$HOME/.cargo/env"
 
 export GTK_THEME=Orchis-Red-Dark
 export TERMINAL=/bin/kitty

@@ -8,6 +8,12 @@ case $- in
       *) return;;
 esac
 
+# Include SHELL scripts
+for file in ~/.shell/*
+do
+    source $file
+done
+
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
@@ -112,10 +118,10 @@ else
 fi
 unset color_prompt force_color_prompt
 
-# If this is an xterm set the title to user@host:dir
+# If this is an xterm set the title to user @ host in dir
 case "$TERM" in
 xterm*|rxvt*)
-    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
+    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u @ \h in \w\a\]$PS1"
     ;;
 *)
     ;;
@@ -183,14 +189,7 @@ else
     }
 fi
 
-for file in ~/.shell/*
-do 
-    source "$file"
-done
-
-# LS_COLORS="fi=00:di=1;${PURPLE}:ex=1;${GREEN}:*.tar=4;${RED}:*.zip=4;${RED}:*.gz=4;${RED}:*.xz=4;${RED}:*.bz2=4;${RED}:*.genozip=4;${RED}:*.lz=4;${RED}:*.lz4=4;${RED}:*.jar=4;${RED}:*.lzma=4;${RED}:*.lzo=4;${RED}:*.rz=4;${RED}:*.sfark=4;${RED}:*.sz=4;${RED}:*.deb=4;${RED}72:*.jpg=${L_CYAN}:*.jpeg=${L_CYAN}:*.png=${L_CYAN}:*.ico=${L_CYAN}:*.log=04"
-export PATH=$PATH:/home/jp/.spicetify
-export PATH=$PATH:/home/jp/.local/bin
+# Load Rust/Cargo env variables
 if [ -f "$HOME/.cargo/env" ]; then
     . "$HOME/.cargo/env"
 fi
