@@ -1,0 +1,16 @@
+#! /bin/bash
+stow -D .
+
+# MAKE DIRECTORIES
+mkdir -pv "$HOME/.local/bin"
+
+# GET ALL DIRS IN .config
+CONFIG_FOLDERS=( )
+for dir in .config/*
+do
+	CONFIG_FOLDERS+=( ${dir#$".config"\/} )
+done
+
+mkdir -pv $"$HOME/.config/"${CONFIG_FOLDERS[@]}
+
+stow -R .
