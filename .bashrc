@@ -108,7 +108,6 @@ if [ "$color_prompt" = yes ]; then
     print_pre_prompt() {
         # The padding ammount has to take into consideration the escape characters too (color and format)
         base_compensate=12
-        echo "ERROR: $1"
     
         if [ $1 != 0 ]; then 
             BASE=1
@@ -122,7 +121,6 @@ if [ "$color_prompt" = yes ]; then
             compensate=$base_compensate
         fi
 
-        echo COLUMNS:$(($COLUMNS+$compensate))
         printf "%*s\r%s" $(($COLUMNS+${compensate})) $"$(exit_code $1) $(time_prompt)" "$(left_prompt)"
     }
     
