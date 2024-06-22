@@ -85,6 +85,11 @@ if [ "$color_prompt" = yes ]; then
     # }
 
     # # PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u @ \h in \[\033[00m\]\[\033[01;34m\]\w \n\[\033[00m\]\$ '
+    exit_code() {
+        if [ $1 != 0 ]; then 
+            echo -e "[${F_BOLD}${C_RED}$1${NO_FORMAT}]"
+        fi
+    }
 
     left_prompt() {
         echo -e "${F_BOLD}${C_RED}\u${NO_FORMAT} ${F_BOLD}${F_DIM}${C_GREY}@${NO_FORMAT} ${F_BOLD}${C_YELLOW}\h${NO_FORMAT} ${F_BOLD}${F_DIM}${C_GREY}in${NO_FORMAT} ${F_BOLD}${C_PURPLE}\w${NO_FORMAT}\$(__git_ps1 ' (%s)') "
@@ -101,13 +106,30 @@ if [ "$color_prompt" = yes ]; then
     }
 
     print_pre_prompt() {
-        compensate=12
-        printf "%*s\r%s\n" "$(($COLUMNS+${compensate}))" "$(time_prompt)" "$(left_prompt)"
+        # The padding ammount has to take into consideration the escape characters too (color and format)
+        base_compensate=12
+        echo "ERROR: $1"
+    
+        if [ $1 != 0 ]; then 
+            BASE=1
+            if [ ${#1} = 1 ]; then
+                BASE=2
+            elif [ ${#1} = 3 ]; then
+                BASE=0
+            fi
+            compensate=$(($compensate+${#1}+32+$BASE))
+        else
+            compensate=$base_compensate
+        fi
+
+        echo COLUMNS:$(($COLUMNS+$compensate))
+        printf "%*s\r%s" $(($COLUMNS+${compensate})) $"$(exit_code $1) $(time_prompt)" "$(left_prompt)"
     }
     
     # PS1="${debian_chroot:+($debian_chroot)}$(left_prompt)| $(time_prompt)\n${F_BOLD}${C_GREEN}\$${NO_FORMAT} "
     update_ps1() {
-        PS1="${debian_chroot:+($debian_chroot)}$(print_pre_prompt)\n${F_BOLD}${C_CYAN}\$${NO_FORMAT} "
+        local EXIT=$?
+        PS1="${debian_chroot:+($debian_chroot)}$(print_pre_prompt $EXIT)\n${F_BOLD}${C_CYAN}\$${NO_FORMAT} "
     }
 
     PS2="${F_BOLD}${C_CYAN}\$${NO_FORMAT} "
