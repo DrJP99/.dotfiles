@@ -1,69 +1,10 @@
 # Set up the prompt
 
-# COLORS
-NO_FORMAT=$'\001\e[0m\002'
-F_BOLD=$'\001\e[1m\002'
-F_DIM=$'\001\e[2m\002'
-
-# COLORS
-# C_RED=$'\001\e[38;5;1m\002'
-# C_ORANGE=$'\001\e[38;5;172m\002'
-# c_GREY=$'\001\e[38;5;95m\002'
-# C_GREEN=$'\001\e[38;5;41m\002'
-# C_BLUE=$'\001\e[38;5;14m\002'
-# C_YELLOW=$'\001\e[38;5;214m\002'
-# C_PURPLE=$'\001\e[${L_PURPLE}m\002'
-
-# Terminal Colors
-# SIMPLE CODES
-BLACK='30'
-GREY='38;5;8'
-
-RED='31'
-L_RED='38;5;9'
-
-GREEN='32'
-L_GREEN='38;5;10'
-
-YELLOW='33'
-L_YELLOW='38;5;11'
-
-BLUE='34'
-L_BLUE='38;5;12'
-
-PURPLE='35'
-L_PURPLE='38;5;13'
-
-CYAN='36'
-L_CYAN='38;5;14'
-
-WHITE='37'
-L_WHITE='38;5;15'
-
-# FULL CODES
-C_BLACK=$'\001\e[${BLACK}m\002'
-c_GREY=$'\001\e[${GREY}m\002'
-
-C_RED=$'\001\e['${RED}'m\002'
-C_L_RED=$'\001\e['${L_RED}'m\002'
-
-C_GREEN=$'\001\e['${GREEN}'m\002'
-C_L_GREEN=$'\001\e['${L_GREEN}'m\002'
-
-C_YELLOW=$'\001\e['${YELLOW}'m\002'
-C_L_YELLOW=$'\001\e['${L_YELLOW}'m\002'
-
-C_BLUE=$'\001\e['${BLUE}'m\002'
-C_L_BLUE=$'\001\e['${L_BLUE}'m\002'
-
-C_PURPLE=$'\001\e['${PURPLE}'m\002'
-C_L_PURPLE=$'\001\e['${L_PURPLE}'m\002'
-
-C_CYAN=$'\001\e['${CYAN}'m'
-C_L_CYAN=$'\001\e['${L_CYAN}'m\002'
-
-C_WHITE=$'\001\e['${WHITE}'m\002'
-C_L_WHITE=$'\001\e['${L_WHITE}'m\002'
+# Include SHELL scripts
+for file in ~/.shell/*
+do
+    source $file
+done
 
 NEW_LINE=$'\n'
 
@@ -86,13 +27,34 @@ time_prompt() {
 	echo -e "${F_DIM}${C_GREY}$(date '+%H:%M:%S') ${NO_FORMAT}"
 }
 
+exit_code() {
+    if [ $1 != 0 ]; then 
+        echo -e "[${F_BOLD}${C_RED}$1${NO_FORMAT}]"
+    fi
+}
+
 print_pre_prompt() {
-	compensate=12
-	printf "%*s\r%s\n" "$(($COLUMNS+${compensate}))" "$(time_prompt)" "$(left_prompt)"
+    # The padding ammount has to take into consideration the escape characters too (color and format)
+    base_compensate=12
+
+    if [ $1 != 0 ]; then 
+        BASE=1
+        if [ ${#1} = 1 ]; then
+            BASE=2
+        elif [ ${#1} = 3 ]; then
+            BASE=0
+        fi
+        compensate=$(($compensate+${#1}+32+$BASE))
+    else
+        compensate=$base_compensate
+    fi
+
+	printf "%*s\r%s\n" "$(($COLUMNS+${compensate}))" "$(exit_code $1) $(time_prompt)" "$(left_prompt)"
 }
 
 update_ps1() {
-	PS1="%{$(print_pre_prompt)%}%{${NEW_LINE}%}%{${F_BOLD}%}%{${C_CYAN}%}\$%{${NO_FORMAT}%} "
+    local EXIT=$?
+	PS1="%{$(print_pre_prompt $EXIT)%}%{${NEW_LINE}%}%{${F_BOLD}%}%{${C_CYAN}%}\$%{${NO_FORMAT}%} "
 }
 
 PROMPT_COMMAND=update_ps1
