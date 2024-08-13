@@ -19,6 +19,13 @@ s() { # do sudo, or sudo the last command if no argument given
     fi
 }
 
+#git add, commit and push
+function lazygit() {
+    git add -A
+    git commit -m "$*"
+    git push
+}
+
 # easy extract
 function extract {
  if [ $# -eq 0 ]; then

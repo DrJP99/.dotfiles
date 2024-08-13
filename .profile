@@ -26,5 +26,10 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
+# Check if using Wayland
+if [ $XDG_SESSION_TYPE = 'wayland' ] ; then
+    export MOZ_ENABLE_WAYLAND=0 
+fi
+
 export GTK_THEME=Orchis-Red-Dark
 export TERMINAL=/bin/kitty
