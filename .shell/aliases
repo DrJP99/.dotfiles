@@ -71,3 +71,6 @@ function extract {
         esac
     done
 }
+
+# dnf cleanup
+alias dnfcleanup='sudo dnf remove $(dnf rq --installonly --latest-limit=-3)'
