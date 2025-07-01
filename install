@@ -1,5 +1,10 @@
 #! /bin/bash
+
+# DELETE PREVIOUS STOW
 stow -D .
+
+# SOURCE COLORS
+. "./.shell/colors"
 
 # MAKE DIRECTORIES
 mkdir -pv "$HOME/.local/bin"
@@ -13,4 +18,10 @@ done
 
 mkdir -pv ${CONFIG_FOLDERS[@]}
 
+# CHECK IF OH-MY-ZSH IS INSTALLED
+if [ ! -d "$HOME/.oh-my-zsh" ]; then
+	echo -e "${F_BOLD%}${F_C_YELLOW}WARNING:${NO_FORMAT} oh-my-zsh is not installed, install it here: ${F_C_PURPLE}https://ohmyz.sh/#install${NO_FORMAT}\n"
+fi
+
+# STOW FILES
 stow -R .
