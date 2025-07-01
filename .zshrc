@@ -112,9 +112,13 @@ source ~/.git-prompt.sh
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
+
+# Install at https://github.com/zsh-users/zsh-history-substring-search#
 plugins=(git zsh-history-substring-search z copypath copybuffer)
 
 ZSH="$HOME/.oh-my-zsh"
 source $ZSH/oh-my-zsh.sh
+# Install https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# Install https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md
 source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
