@@ -75,11 +75,11 @@ function extract {
 # dnf cleanup
 alias dnfcleanup='sudo dnf remove $(dnf rq --installonly --latest-limit=-3)'
 
-# WUDO = Run windows commands from WSL as elevated shell
 # CHECK IF RUNNING WSL
 if eval "uname -r" | grep -q "microsoft"; then
     # CHECK IF HAVE wsl-sudo
-    if [ -f "$HOME/wsl-sudo/wsl-sudo.py" ]
+    if [ -f "$HOME/wsl-sudo/wsl-sudo.py" ]; then
+        # WUDO = Run windows commands from WSL as elevated shell
         alias wudo="python3 $HOME/wsl-sudo/wsl-sudo.py"
     fi
 fi
