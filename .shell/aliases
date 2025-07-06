@@ -73,4 +73,4 @@ function extract {
 }
 
 # dnf cleanup
-alias dnfcleanup='sudo dnf remove $(dnf rq --installonly --latest-limit=-3)'
+alias dnfcleanup='sudo dnf remove $(dnf repoquery --installonly --latest-limit=-2 -q)'
