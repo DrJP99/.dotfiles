@@ -75,6 +75,9 @@ function extract {
 # dnf cleanup
 alias dnfcleanup='sudo dnf remove $(dnf repoquery --installonly --latest-limit=-2 -q)'
 
+# list installed kernels
+alias listkernels='rpm -qa kernel'
+
 # CHECK IF RUNNING WSL
 if eval "uname -r" | grep -q "microsoft"; then
     # CHECK IF HAVE wsl-sudo
