@@ -13,6 +13,7 @@ if eval "uname -r" | grep -q "microsoft"; then
     # SET MY SSH KEYS
     SSH_KEYS=( )
     SSH_KEYS+=( "personal_ed25519" )
+    SSH_KEYS+=( "work_gh_ed25519" )
 
     # ADD MY SSH KEYS TO AGENT
     for key in "${SSH_KEYS[@]}"

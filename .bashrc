@@ -92,7 +92,7 @@ if [ "$color_prompt" = yes ]; then
     }
 
     left_prompt() {
-        echo -e "${F_BOLD}${C_RED}\u${NO_FORMAT} ${F_BOLD}${F_DIM}${C_GREY}@${NO_FORMAT} ${F_BOLD}${C_YELLOW}\h${NO_FORMAT} ${F_BOLD}${F_DIM}${C_GREY}in${NO_FORMAT} ${F_BOLD}${C_PURPLE}\w${NO_FORMAT}\$(__git_ps1 ' (%s)') "
+        echo -e "${F_BOLD}${C_RED}\u${NO_FORMAT} ${F_BOLD}${F_DIM}${C_GREY}@${NO_FORMAT} ${F_BOLD}${C_YELLOW}\h${NO_FORMAT} ${F_BOLD}${F_DIM}${C_GREY}in${NO_FORMAT} ${F_BOLD}${C_PURPLE}\w${NO_FORMAT}$(__git_ps1 ' (%s)') "
     }
     
     # LEFT_PROMPT="${F_BOLD}${C_RED}\u${NO_FORMAT} ${F_BOLD}${F_DIM}${C_GREY}@${NO_FORMAT} ${F_BOLD}${C_ORANGE}\h${NO_FORMAT} ${F_BOLD}${F_DIM}${C_GREY}in${NO_FORMAT} ${F_BOLD}${C_BLUE}\w${NO_FORMAT}\$(__git_ps1 ' (%s)') "

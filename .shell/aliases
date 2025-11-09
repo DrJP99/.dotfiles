@@ -11,9 +11,9 @@ fstr() {
 }
 
 # sudo last command
-s() { # do sudo, or sudo the last command if no argument given
+function please() { # do sudo, or sudo the last command if no argument given
     if [[ $# == 0 ]]; then
-        sudo $(history -p '!!')
+        sudo $(fc -ln -1)
     else
         sudo "$@"
     fi
