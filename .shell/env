@@ -1,5 +1,8 @@
 if [ "$XDG_SESSION_TYPE" = 'wayland' ] ; then
     export MOZ_ENABLE_WAYLAND=0 
+    export GDK_GL=gles
+    export GTK_MODULES=canberra-gtk-module
+    export GSK_RENDERER=ngl
 fi
 
 # CHECK IF RUNNING WSL
