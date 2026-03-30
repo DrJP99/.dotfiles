@@ -75,6 +75,10 @@ function extract {
 # dnf cleanup
 alias dnfcleanup='sudo dnf remove $(dnf repoquery --installonly --latest-limit=-2 -q)'
 
+# fix nautilus
+# nautilus-python causes nautilus to not open, it is necessary to remove it and restart the process
+alias fixnautilus='sudo dnf remove nautilus-python -y; killall nautilus; nautilus -q; nautilus --help'
+
 # list installed kernels
 alias listkernels='rpm -qa kernel'
 
