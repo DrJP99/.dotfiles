@@ -82,6 +82,9 @@ alias fixnautilus='sudo dnf remove nautilus-python -y; killall nautilus; nautilu
 # list installed kernels
 alias listkernels='rpm -qa kernel'
 
+# make sure we don't overwrite file with mv command
+alias mv='mv -i'
+
 # CHECK IF RUNNING WSL
 if eval "uname -r" | grep -q "microsoft"; then
     # CHECK IF HAVE wsl-sudo
